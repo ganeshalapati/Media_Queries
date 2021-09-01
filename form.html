@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="E:/javascript/node/HTML_Inputs_And_Forms/CSS/form.css">
     <title>Employee Registration Form</title>
+    <link rel="stylesheet" href="E:/javascript/node/HTML_Inputs_And_Forms/CSS/form.css">
 </head>
 
 <body>
@@ -83,24 +83,44 @@
         
         const email = document.querySelector('#email');
         const emailError = document.querySelector('.email-error');
-        text.addEventListener('input', function() {
+        email.addEventListener('input', function() {
+            console.log(emailError);
            let emailRegex = RegExp("^[A-Z a-z]{1,}([+-_.]*)[A-Z a-z 0-9 _+-.]*[@]{1}[A-Z a-z 0-9 +_-]{1,}[.]{1}[a-z]{2,3}([.]{1}[a-z]{2})*$");
            if(emailRegex.test(email.value))
-              emailError.emailContent = "";
-           else emailError.emailContent = "Email is InValid";
+           {
+               console.log("Correct Email");
+              emailError.textContent = "";
+           }
+           else{
+               console.log("Invalid Email");
+            emailError.textContent = "Email is InValid";
+           }
         });
 
+                 //To validate the phone field using the REGEX expression
         //Mobile number validation
         const number = document.querySelector('#tel');
         const numberError = document.querySelector('.tel-error');
         number.addEventListener('input', function () {
             let numberRegex = RegExp('^[1-9]{2}\\s{0,1}[1-9]{1}[0-9]{9}$');
             if (numberRegex.test(number.value))
+            {
+                console.log("correct");
                 numberError.textContent = ' ';
-            else
+            }
+                else
                 numberError.textContent = 'Invalid Number!';
         });  
-        
+         //password validation minimum 8 characters
+         const pwd = document.querySelector('#pwd');
+        const passworderror = document.querySelector('.pwd-error');
+        pwd.addEventListener('input', function () {
+        let passwordpattern = RegExp('^[a-z A-Z 0-9 @#%!&*_]{8,}$');
+            if (passwordpattern.test(pwd.value))
+                passworderror.textContent = ' ';
+            else
+                passworderror.textContent = 'Invalid Password!';
+        });
         
     </script>
 </body>
